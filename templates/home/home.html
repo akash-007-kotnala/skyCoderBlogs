@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %}
+{% block homeactive %} active {% endblock homeactive %}
+
+{% block body %}
+<div class="container my-3">
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to skyCoder!</h1>
+        <p class="lead">This is techno Blog Website for the  geeks .</p>
+        <hr class="my-4">
+        <p>Let us take you into a deeper experience, make a moment a lasting conveyable memory. Let us help build your tribe. </p>
+        <a class="btn btn-primary btn-lg" href="/blog" role="button">Go to Blog</a>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Popular blogposts:</h2>
+    {% for post in allPosts%}
+
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-danger">Article By {{post.author}}</strong>
+            <h3 class="mb-0">{{post.title}}</h3>
+            <div class="mb-1 text-muted">{{post.datetime}}</div>
+            <p class="card-text mb-auto">{{post.content| truncatechars:100 }}</p>
+            <a href="/blog/{{post.slug}}"  class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+
+        </div>
+    </div> 
+  {% endfor %}
+</div>
+{% endblock body %}
